@@ -16,14 +16,21 @@ Require Export P10.
     defining a new kind of pairs, but this is not the only way.)  *)
 
 Fixpoint alternate (l1 l2 : natlist) : natlist :=
-  FILL_IN_HERE.
+  match l1 with
+  | nil => l2
+  | h::t =>
+    match l2 with
+    | nil => l1
+    | h2::t2 => h::h2::(alternate t t2)
+    end
+  end.
 
 Example test_alternate1:        alternate [1;2;3] [4;5;6] = [1;4;2;5;3;6].
-Proof. exact FILL_IN_HERE. Qed.
+Proof. reflexivity. Qed.
 Example test_alternate2:        alternate [1] [4;5;6] = [1;4;5;6].
-Proof. exact FILL_IN_HERE. Qed.
+Proof. reflexivity. Qed.
 Example test_alternate3:        alternate [1;2;3] [4] = [1;4;2;3].
-Proof. exact FILL_IN_HERE. Qed.
+Proof. reflexivity. Qed.
 Example test_alternate4:        alternate [] [20;30] = [20;30].
-Proof. exact FILL_IN_HERE. Qed.
+Proof. reflexivity. Qed.
 

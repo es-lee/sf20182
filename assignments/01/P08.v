@@ -9,7 +9,9 @@ Require Export P07.
 (** Use induction to prove this simple fact about [double]: *)
 
 Lemma double_plus : forall n, double n = n + n .
-Proof.  
-  exact FILL_IN_HERE.
+Proof.
+  intros. induction n.
+  - simpl. reflexivity.
+  - simpl. rewrite IHn. SearchAbout (_+_). rewrite plus_n_Sm. reflexivity.
 Qed.
 
